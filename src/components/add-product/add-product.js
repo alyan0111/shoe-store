@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const AddProduct = () => {
-    const [product, setProduct] = useState({
+    const initialProductState = {
         product_name: '',
         product_price: '',
+        product_discount:'',
         product_description: '',
-        product_catagory: '',
+        product_category: '',
+        product_vendor: '',
+        product_size: [],
         product_picture: null,
         picturePath: ''
-    });
+    };
+
+    const [product, setProduct] = useState(initialProductState);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,22 +43,42 @@ const AddProduct = () => {
         }
     };
 
+    const handleSizeChange = (e) => {
+        const { value, checked } = e.target;
+        let updatedSizes = [...product.product_size];
+
+        if (checked) {
+            updatedSizes.push(value);
+        } else {
+            updatedSizes = updatedSizes.filter((size) => size !== value);
+        }
+
+        setProduct({
+            ...product,
+            product_size: updatedSizes
+        });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const { product_name, product_price, product_description, product_catagory, product_picture } = product;
+        const { product_name, product_price, product_discount,  product_description, product_category, product_vendor, product_size, product_picture } = product;
 
         const formData = {
             product_name,
             product_price,
+            product_discount,
             product_description,
-            product_catagory,
+            product_category,
+            product_vendor,
+            product_size: product_size.join(','),
             product_picture
         };
 
         try {
             await axios.post('http://localhost:8080/add-product', formData);
             alert('Product added successfully');
+            setProduct(initialProductState);  // Reset form fields
         } catch (error) {
             alert('Failed to add product');
         }
@@ -89,6 +114,19 @@ const AddProduct = () => {
                     />
                 </div>
                 <div className="mb-4">
+                    <label htmlFor="product_discount" className="block text-sm font-medium text-gray-600">Product Discount:</label>
+                    <input 
+                        type="number" 
+                        id="product_discount" 
+                        name="product_discount" 
+                        min="0" 
+                        value={product.product_discount} 
+                        onChange={handleChange} 
+                        required 
+                        className="mt-1 p-2 w-full border rounded-md"
+                    />
+                </div>
+                <div className="mb-4">
                     <label htmlFor="product_description" className="block text-sm font-medium text-gray-600">Product Description:</label>
                     <textarea 
                         id="product_description" 
@@ -101,16 +139,53 @@ const AddProduct = () => {
                     ></textarea>
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="product_catagory" className="block text-sm font-medium text-gray-600">Product Category:</label>
-                    <input 
-                        type="text" 
-                        id="product_catagory" 
-                        name="product_catagory" 
-                        value={product.product_catagory} 
+                    <label htmlFor="product_category" className="block text-sm font-medium text-gray-600">Product Category:</label>
+                    <select 
+                        id="product_category" 
+                        name="product_category" 
+                        value={product.product_category} 
                         onChange={handleChange} 
                         required 
                         className="mt-1 p-2 w-full border rounded-md"
-                    />
+                    >
+                        <option value="">Select Category</option>
+                        <option value="men">Men</option>
+                        <option value="women">Women</option>
+                    </select>
+                </div>
+                <div className="mb-4">
+                    <label htmlFor="product_vendor" className="block text-sm font-medium text-gray-600">Product Vendor:</label>
+                    <select 
+                        id="product_vendor" 
+                        name="product_vendor" 
+                        value={product.product_vendor} 
+                        onChange={handleChange} 
+                        required 
+                        className="mt-1 p-2 w-full border rounded-md"
+                    >
+                        <option value="">Select Vendor</option>
+                        <option value="Marc Kessler">Marc Kessler</option>
+                        <option value="Reeva">Reeva</option>
+                        <option value="Regale">Regale</option>
+                    </select>
+                </div>
+                <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-600">Product Size:</label>
+                    <div className="flex flex-wrap">
+                        {['36/4', '37/5', '38/6', '39/5', '39/7', '40/6', '40/8', '41/7', '41/9', '42/8', '43/9', '44/10', '45/11'].map((size) => (
+                            <div key={size} className="mr-4">
+                                <input 
+                                    type="checkbox" 
+                                    id={size} 
+                                    name={size} 
+                                    value={size} 
+                                    checked={product.product_size.includes(size)} 
+                                    onChange={handleSizeChange} 
+                                />
+                                <label htmlFor={size} className="ml-2">{size}</label>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div className="mb-4">
                     <label htmlFor="product_picture" className="block text-sm font-medium text-gray-600">Product Picture:</label>
