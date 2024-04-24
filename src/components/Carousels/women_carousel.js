@@ -11,7 +11,7 @@ function NextArrow(props) {
   return (
     <IoIosArrowForward
       className={className}
-      style={{ ...style, color:"black",border:"1px solid black", borderRadius:"50px",height:"2rem",width:"2rem",zIndex:"20",  }}
+      style={{ ...style, color:"black",border:"1px solid black", borderRadius:"50px",height:"2rem",width:"2rem",  }}
       onClick={onClick}
     />
   );
@@ -22,7 +22,7 @@ function PrevArrow(props) {
   return (
     <IoIosArrowBack
       className={className}
-      style={{ ...style, color:"black",border:"1px solid black", borderRadius:"50px",height:"2rem",width:"2rem",zIndex:"20" }}
+      style={{ ...style, color:"black",border:"1px solid black", borderRadius:"50px",height:"2rem",width:"2rem", }}
       onClick={onClick}
     />
   );

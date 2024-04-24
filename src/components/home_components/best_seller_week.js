@@ -27,7 +27,7 @@ export default function BestSellerWeek() {
                     <img src={best_seller_2b} alt='week best seller' />
                 </Slider>
             </div>
-            <div className="w-[95%] hidden md:block">
+            <div className="w-full hidden md:block">
                 <Slider {...settings}>
                     <img src={best_seller_1} alt='week best seller' className="w-full" />
                     <img src={best_seller_2} alt='week best seller' className="w-full" />

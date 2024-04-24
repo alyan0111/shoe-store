@@ -25,7 +25,7 @@ export default function Footer() {
             </h1>
             <button
               onClick={() => toggleDropdown("touch")}
-              className="text-blue-400"
+              className="text-[#64d3e4]"
             >
               {openDropdown === "touch" ? "-" : "+"}
             </button>
@@ -37,7 +37,7 @@ export default function Footer() {
             <span className="text-neutral-500 flex items-center gap-2">
               <CiMail className="text-base sm:text-xl md:text-2xl" />
               <a
-                className="hover:text-blue-400 text-wrap"
+                className="hover:text-[#64d3e4] text-wrap"
                 target="_blank"
                 rel="noopener noreferrer"
                 href="mailto:info@shoeplanet.pk"
@@ -63,7 +63,7 @@ export default function Footer() {
               <span className="text-neutral-500 flex items-center gap-2">
                 <CiMail className="text-base sm:text-xl md:text-2xl" />
                 <a
-                  className="hover:text-blue-400 text-wrap"
+                  className="hover:text-[#64d3e4] text-wrap"
                   target="_blank"
                   rel="noopener noreferrer"
                   href="mailto:info@shoeplanet.pk"
@@ -93,7 +93,7 @@ export default function Footer() {
             <h1 className="text-base md:text-lg font-semibold">Get Help</h1>
             <button
               onClick={() => toggleDropdown("help")}
-              className="text-blue-400"
+              className="text-[#64d3e4]"
             >
               {openDropdown === "help" ? "-" : "+"}
             </button>
@@ -101,19 +101,19 @@ export default function Footer() {
           <div className="hidden md:block space-y-3">
             <h1 className="text-base md:text-lg font-semibold">Get Help</h1>
             <div className="flex flex-col gap-3">
-              <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Shipping & Delivery
               </a>
-              <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Return & Exchange
               </a>
-              <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Policy
               </a>
-              <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Privacy Policy
               </a>
-              <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Terms & Conditions
               </a>
             </div>
@@ -121,19 +121,19 @@ export default function Footer() {
           {openDropdown === "help" && (
             <div className="md:hidden space-y-3">
               <div className="flex flex-col gap-3">
-                <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                   Shipping & Delivery
                 </a>
-                <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                   Return & Exchange
                 </a>
-                <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                   Policy
                 </a>
-                <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                   Privacy Policy
                 </a>
-                <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                   Terms & Conditions
                 </a>
               </div>
@@ -147,7 +147,7 @@ export default function Footer() {
             <h1 className="text-base md:text-lg font-semibold">Information</h1>
             <button
               onClick={() => toggleDropdown("info")}
-              className="text-blue-400"
+              className="text-[#64d3e4]"
             >
               {openDropdown === "info" ? "-" : "+"}
             </button>
@@ -155,16 +155,16 @@ export default function Footer() {
           <div className="hidden md:block space-y-3">
             <h1 className="text-base md:text-lg font-semibold">Information</h1>
             <div className="flex flex-col gap-3">
-              <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Reviews
               </a>
-              <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Size Guide
               </a>
-              <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 FAQs
               </a>
-              <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Search
               </a>
             </div>
@@ -172,16 +172,16 @@ export default function Footer() {
           {openDropdown === "info" && (
             <div className="md:hidden space-y-3">
               <div className="flex flex-col gap-3">
-                <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                   Reviews
                 </a>
-                <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                   Size Guide
                 </a>
-                <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                   FAQs
                 </a>
-                <a href="#" className="text-neutral-500 hover:text-blue-400 duration-500">
+                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                   Search
                 </a>
               </div>
@@ -193,7 +193,7 @@ export default function Footer() {
       <div className="flex justify-center py-4">
         <p className="text-sm sm:ext-base md:text-lg text-neutral-500 text-wrap">
           Copyright &copy;{new Date().getFullYear()}{" "}
-          <span className="text-blue-400">Shoe Planet</span> all rights reserved.
+          <span className="text-[#64d3e4]">Shoe Planet</span> all rights reserved.
         </p>
       </div>
     </div>
