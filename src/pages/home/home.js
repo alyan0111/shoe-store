@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Website_banner from "./images/Website_banner.webp";
 import { Link } from "react-router-dom";
-import MenCarousel from "../../components/Carousels/men_carousel";
-import WomenCarousel from "../../components/Carousels/women_carousel";
+import Men from "../../components/Carousels/men_carousel";
+import Women from "../../components/Carousels/women_carousel";
 import ExclusiveLine from "../../components/home_components/exclusive_line";
 import Collection from "../../components/home_components/collection";
 import BestSellerWeek from "../../components/home_components/best_seller_week";
@@ -56,8 +56,8 @@ export default function Home() {
       </div>
 
       <div>
-        {activeButton === "section1" && <MenCarousel />}
-        {activeButton === "section2" && <WomenCarousel />}
+        {activeButton === "section1" && <Men/>}
+        {activeButton === "section2" && <Women />}
       </div>
 
       <div>

@@ -17,13 +17,13 @@ export default function BestSellerWeek() {
     };
 
     return (
-        <div className="container w-screen flex flex-col justify-center items-center  my-8">
-            <div className="text-center mb-4">
-                <h1 className="font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl my-16">Best Sellers of the Week</h1>
+        <div className="sm:container w-screen flex flex-col justify-center items-center  my-8">
+            <div className="flex flex-wrap items-center justify-center gap-4 mx-2 sm:gap-8 md:gap-10 mb-4">
+            <span className='bg-black h-0.5 w-4 sm:w-10  md:w-20 '></span>  <h1 className=" font-semibold text-wrap text-base sm:text-xl md:text-2xl lg:text-3xl my-16">Best Sellers of the Week</h1><span className='bg-black h-0.5 w-4 sm:w-10  md:w-20'></span>
             </div>
             <div className="w-[90%] sm:w-[95%] md:hidden ">
                 <Slider {...settings}>
-                    <img src={best_seller_1b} alt='week best seller' className=''  />
+                    <img src={best_seller_1b} alt='week best seller'/>
                     <img src={best_seller_2b} alt='week best seller' />
                 </Slider>
             </div>
