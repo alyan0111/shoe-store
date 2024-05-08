@@ -106,7 +106,7 @@ const Women = () => {
                   />
                 </Link>
               </div>
-              <Link className="font-semibold font-mono cursor-pointer duration-300 hover:text-blue-400">
+              <Link className="font-semibold font-mono cursor-pointer duration-300 hover:text-[#64d3e4]">
                 {product.product_name}
               </Link>
               <p className="text-red-700 text-sm font-sans">

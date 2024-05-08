@@ -43,15 +43,15 @@ const NavBottom = () => {
   };
 
   const navLinks = [
-    { label: "Summer Sale", key: "summerSale", subLinks: ["Men", "Women"] },
-    { label: "New Arrivals", key: "newArrivals", subLinks: ["Men", "Women"] },
-    { label: "Men", key: "men", subLinks: ["Men Shoes"] },
-    { label: "Women", key: "women", subLinks: ["Women Shoes"] },
-    { label: "Exclusive Line", key: "exclusiveLine", subLinks: ["MK-zen", "MK-premium"] },
+    { to: "/sale", label: "Summer Sale", key: "summerSale", subLinkTo:["/men","/women"], subLinks: ["Men", "Women"] },
+    { to: "/new-arrivals", label: "New Arrivals", key: "newArrivals", subLinkTo:["/men","/women"], subLinks: ["Men", "Women"] },
+    { to: "/men", label: "Men", key: "men", subLinkTo:["/men-shoes"], subLinks: ["Men Shoes"] },
+    { to: "/women", label: "Women", key: "women", subLinkTo:["/women-shoes"], subLinks: ["Women Shoes"] },
+    { to: "/exclusive-line", label: "Exclusive Line", key: "exclusiveLine", subLinkTo:["/mk-zen","/mk-premium"], subLinks: ["MK-zen", "MK-premium"] },
   ];
 
   return (
-    <nav className="fixed bottom-0 bg-white w-full px-4 py-1 shadow-lg lg:hidden flex justify-between items-center">
+    <nav className="fixed bottom-0 bg-white  w-full px-4 py-1 shadow-inner lg:hidden flex justify-between items-center z-50">
       {/* Menu Button */}
       <div className="lg:hidden cursor-pointer flex flex-col items-center justify-center">
         <FaBars className="text-xl " onClick={toggleMenu} />
@@ -80,7 +80,7 @@ const NavBottom = () => {
       <ul
         className={`flex flex-col gap-0 ${
           menuOpen
-            ? " absolute bottom-0 left-0 bg-white h-screen w-[70%] z-20 overflow-y-auto"
+            ? " absolute bottom-0 left-0 bg-white h-screen w-[70%] z-40 overflow-y-auto"
             : "hidden"
         }`}
       >
@@ -90,41 +90,43 @@ const NavBottom = () => {
           </li>
         </div>
         {navLinks.map((link) => (
-          <li key={link.key} className="relative group">
-            <div className="flex items-center p-4 justify-between">
-              <button
-                role="menuitem"
-                aria-expanded={sections[link.key]}
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleDropdown(link.key);
-                }}
-                className={`hover:text-[#64d3e4] duration-500 ${window.innerWidth < 1024 ? 'cursor-pointer' : ''}`}
-              >
-                {link.label}
-              </button>
-              {sections[link.key] ? (
-                <FaMinus
-                  className=" cursor-pointer"
-                  onClick={() => toggleDropdown(link.key)}
-                />
-              ) : (
-                <FaPlus
-                  className=" cursor-pointer"
-                  onClick={() => toggleDropdown(link.key)}
-                />
-              )}
+            <li key={link.key} className="relative group">
+              <div className="flex items-center border-b hover:bg-slate-100 p-4 justify-between">
+                <Link
+                  to={link.to}
+                  className="hover:text-[#64d3e4] duration-300"
+                  onClick={() => {
+                    toggleMenu();
+                    closeDropdowns();
+                  }}
+                >
+                  {link.label}
+                </Link>
+                {sections[link.key] ? (
+                  <FaMinus
+                    className="lg:hidden cursor-pointer"
+                    onClick={() => toggleDropdown(link.key)}
+                  />
+                ) : (
+                  <FaPlus
+                    className="lg:hidden cursor-pointer"
+                    onClick={() => toggleDropdown(link.key)}
+                  />
+                )}
             </div>
          
             <div
-              className={`md:hidden p-4 ${sections[link.key] ? "block" : "hidden"}`}
+              className={`  ${sections[link.key] ? "block" : "hidden"}`}
             >
-              {link.subLinks.map((subLink) => (
+              {link.subLinks.map((subLink,index) => (
                 <Link
                   key={subLink}
-                  to={`/${subLink.toLowerCase().replace(/\s+/g, '')}`}
-                  onClick={closeDropdowns}
-                  className="block hover:text-[#64d3e4] w-full text-left"
+                  to={link.subLinkTo[index]}
+                  onClick={() => {
+                    toggleMenu();
+                    closeDropdowns();
+                  }}
+                  className="block border-b p-4 hover:text-[#64d3e4] w-full text-left"
                 >
                   {subLink}
                 </Link>

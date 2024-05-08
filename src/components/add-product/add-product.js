@@ -9,6 +9,8 @@ const AddProduct = () => {
         product_description: '',
         product_category: '',
         product_vendor: '',
+        product_sale:'',
+        product_class:'',
         product_size: [],
         product_picture: null,
         picturePath: ''
@@ -62,7 +64,8 @@ const AddProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const { product_name, product_price, product_discount,  product_description, product_category, product_vendor, product_size, product_picture } = product;
+        const { product_name, product_price, product_discount,  product_description, product_category, product_vendor,product_sale,
+            product_class, product_size, product_picture } = product;
 
         const formData = {
             product_name,
@@ -71,6 +74,8 @@ const AddProduct = () => {
             product_description,
             product_category,
             product_vendor,
+            product_sale,
+            product_class,
             product_size: product_size.join(','),
             product_picture
         };
@@ -167,6 +172,41 @@ const AddProduct = () => {
                         <option value="Marc Kessler">Marc Kessler</option>
                         <option value="Reeva">Reeva</option>
                         <option value="Regale">Regale</option>
+                    </select>
+                </div>
+
+                <div className="mb-4">
+                    <label htmlFor="product_sale" className="block text-sm font-medium text-gray-600">Product sale:</label>
+                    <select 
+                        id="product_sale" 
+                        name="product_sale" 
+                        value={product.product_sale} 
+                        onChange={handleChange} 
+                        required 
+                        className="mt-1 p-2 w-full border rounded-md"
+                    >
+                        <option value="none">None</option>
+                        <option value="summer sale">Sumer sale</option>
+                        <option value="winter sale">Winter sale</option>
+                        <option value="festive sale">Festive sale</option>
+                        <option value="new arrival">New Arrival</option>
+
+                    </select>
+                </div>
+
+                <div className="mb-4">
+                    <label htmlFor="product_class" className="block text-sm font-medium text-gray-600">Product class:</label>
+                    <select 
+                        id="product_class" 
+                        name="product_class" 
+                        value={product.product_class} 
+                        onChange={handleChange} 
+                        required 
+                        className="mt-1 p-2 w-full border rounded-md"
+                    >
+                        <option value="">Select class</option>
+                        <option value="MK-zen">MK-zen</option>
+                        <option value="MK-premium">MK-premium</option>
                     </select>
                 </div>
                 <div className="mb-4">

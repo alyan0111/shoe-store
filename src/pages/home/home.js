@@ -19,7 +19,7 @@ export default function Home() {
       <div>
         <Link to="/">
           <div className="relative">
-            <button className="bg-blue-400 rounded-full w-10 sm:w-20 md:w-28 lg:w-36 h-3 sm:h-5 md:h-6 lg:h-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 hover:opacity-85"></button>
+            <button className="bg-[#64d3e4] rounded-full w-10 sm:w-20 md:w-28 lg:w-36 h-3 sm:h-5 md:h-6 lg:h-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 hover:opacity-85"></button>
             <img
               src={Website_banner}
               alt="Website_banner"
@@ -60,17 +60,14 @@ export default function Home() {
         {activeButton === "section2" && <Women />}
       </div>
 
-      <div>
       <ExclusiveLine/>
-      </div>
+      
 
-      <div>
         <Collection/>
-      </div>
+      
 
-      <div>
         <BestSellerWeek/>
-      </div>
+      
     </div>
   );
 }

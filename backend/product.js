@@ -1,3 +1,5 @@
+//Product Schema
+
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
@@ -22,6 +24,14 @@ const productSchema = new mongoose.Schema({
   product_category: {
     type: String,
     required: true,
+  },
+  product_sale:{
+    type:String,
+    required:true,
+  },
+  product_class:{
+    type:String,
+    required:true,
   },
   product_vendor: {
     type: String,

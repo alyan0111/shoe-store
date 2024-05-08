@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { CiMail } from "react-icons/ci";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { LuPhone } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -15,8 +16,8 @@ export default function Footer() {
   };
 
   return (
-    <div>
-      <div className="flex flex-col md:flex-row justify-evenly bg-neutral-100 p-10 mt-20">
+    <div className="pb-3">
+      <div className="flex flex-col md:flex-row justify-evenly gap-4 bg-neutral-100 p-7 sm:p-10 mt-20">
         {/* Get in Touch */}
         <div className="space-y-5">
           <div className="flex justify-between items-center md:hidden">
@@ -101,41 +102,35 @@ export default function Footer() {
           <div className="hidden md:block space-y-3">
             <h1 className="text-base md:text-lg font-semibold">Get Help</h1>
             <div className="flex flex-col gap-3">
-              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+              <Link to="/shipping-policy" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Shipping & Delivery
-              </a>
-              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                Return & Exchange
-              </a>
-              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                Policy
-              </a>
-              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+              </Link>
+              <Link to="/exchange-policy" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+                Return & Exchange Policy
+              </Link>
+              <Link to="/privacy-policy" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+              </Link>
+              <Link to="/terms-conditions" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Terms & Conditions
-              </a>
+              </Link>
             </div>
           </div>
           {openDropdown === "help" && (
             <div className="md:hidden space-y-3">
               <div className="flex flex-col gap-3">
-                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                  Shipping & Delivery
-                </a>
-                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                  Return & Exchange
-                </a>
-                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                  Policy
-                </a>
-                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                  Privacy Policy
-                </a>
-                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                  Terms & Conditions
-                </a>
+              <Link to="/shipping-policy" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+                Shipping & Delivery
+              </Link>
+              <Link to="/exchange-policy" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+                Return & Exchange Policy
+              </Link>
+              <Link to="/privacy-policy" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-conditions" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+                Terms & Conditions
+              </Link>
               </div>
             </div>
           )}
@@ -155,35 +150,35 @@ export default function Footer() {
           <div className="hidden md:block space-y-3">
             <h1 className="text-base md:text-lg font-semibold">Information</h1>
             <div className="flex flex-col gap-3">
-              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+              <Link to="reviews" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Reviews
-              </a>
-              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+              </Link>
+              <Link to="/size-guid" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Size Guide
-              </a>
-              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+              </Link>
+              <Link to="faqs" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 FAQs
-              </a>
-              <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+              </Link>
+              <Link to="search" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
                 Search
-              </a>
+              </Link>
             </div>
           </div>
           {openDropdown === "info" && (
             <div className="md:hidden space-y-3">
               <div className="flex flex-col gap-3">
-                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                  Reviews
-                </a>
-                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                  Size Guide
-                </a>
-                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                  FAQs
-                </a>
-                <a href="#" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
-                  Search
-                </a>
+              <Link to="reviews" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+                Reviews
+              </Link>
+              <Link to="/size-guid" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+                Size Guide
+              </Link>
+              <Link to="faqs" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+                FAQs
+              </Link>
+              <Link to="search" className="text-neutral-500 hover:text-[#64d3e4] duration-500">
+                Search
+              </Link>
               </div>
             </div>
           )}
