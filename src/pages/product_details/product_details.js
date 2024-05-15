@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProductCarousel from "../../components/Carousels/product_carousel";
 import { addToCart } from '../../redux/actions';
 import Cart from "../../components/cart/cart";
@@ -11,11 +11,16 @@ const ProductDetails = () => {
   const [count, setCount] = useState(1);
   const dispatch = useDispatch();
   const [cartOpen, setCartOpen] = useState(false);
+  const {email} = useSelector(state => state.auth);
+  const navigate = useNavigate();
 
 
   const addToCartHandler = () => {
-    setCartOpen(!cartOpen);
-    dispatch(addToCart(productDetails._id, count));
+    if (email){setCartOpen(!cartOpen);
+    dispatch(addToCart(productDetails, count));}
+    else {
+      navigate('/login')
+    }
     // Optionally, provide visual feedback to the user
     
   };
@@ -47,7 +52,7 @@ const ProductDetails = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="flex shadow-xl p-4 w-full">
+      <div className="flex flex-col items-start sm:flex-row shadow-xl p-4 w-full">
         <Link
           to="/"
           className="text-gray-600 flex items-center justify-center gap-2 hover:text-[#64d3e4]"
@@ -65,8 +70,8 @@ const ProductDetails = () => {
         <p className="text-gray-600">{productDetails.product_name}</p>
       </div>
       <div className="container">
-        <div className="mt-5 flex justify-center gap-4">
-          <div className="w-[30%]">
+        <div className="mt-5 flex flex-col md:flex-row items-center justify-center gap-4">
+          <div className="w-[100%] md:w-[50%] lg:[40%]">
             <ProductCarousel productDetails={productDetails} />
           </div>
 
@@ -131,7 +136,7 @@ const ProductDetails = () => {
                 Vendor: {productDetails.product_vendor}
               </p>
               <br />
-              <p className="text-gray-600">SKU: {productDetails._id}</p>
+              <p className="text-gray-600 text-wrap">SKU: {productDetails._id}</p>
             </div>
           </div>
         </div>

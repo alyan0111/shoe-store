@@ -7,6 +7,7 @@ const path = require("path");
 const multer = require("multer");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const admin = require('./notification'); // Import notification schema
 
 const app = express();
 
@@ -55,6 +56,7 @@ const upload = multer({ storage: storage }).single("product_picture");
 
 // Middleware to serve static files
 app.use("/public", express.static(path.join(__dirname, "public")));
+
 
 // Endpoint for user signup
 app.post("/signup", async (req, res) => {
@@ -294,6 +296,25 @@ app.post("/cart/remove", async (req, res) => {
   }
 });
 
+// API endpoint to send push notification
+app.post('/notification', (req, res) => {
+  const { token, title, body } = req.body;
+
+  const payload = {
+      notification: {
+          title: title,
+          body: body
+      }
+  };
+
+  admin.messaging().sendToDevice(token, payload)
+      .then((response) => {
+          res.json({ success: true, response });
+      })
+      .catch((error) => {
+          res.status(500).json({ success: false, error });
+      });
+});
 
 app.post("/", (req, res) => {
   res.send("Root is working");

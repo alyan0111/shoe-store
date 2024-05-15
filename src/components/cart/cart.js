@@ -1,18 +1,17 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import { removeFromCart, updateCartQuantity } from '../../redux/actions'; // Import action creators for removing from cart and updating quantity
-import { useDispatch, useSelector } from 'react-redux';
+import { Fragment, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import { removeFromCart, updateCartQuantity } from "../../redux/actions"; // Import action creators for removing from cart and updating quantity
+import { useDispatch, useSelector } from "react-redux";
 
-
-  
 
 export default function Cart() {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(true);
 
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.cartItems);
-  console.log(items);
+
+  
 
   const removeFromCartHandler = (productId) => {
     // Dispatch action to remove item from cart
@@ -25,7 +24,7 @@ export default function Cart() {
   };
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog className="relative z-10" onClose={setOpen}>
+      <Dialog className="relative z-50" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -54,7 +53,9 @@ export default function Cart() {
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                       <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-gray-900">Shopping cart</Dialog.Title>
+                        <Dialog.Title className="text-lg font-medium text-gray-900">
+                          Shopping cart
+                        </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             type="button"
@@ -70,44 +71,55 @@ export default function Cart() {
 
                       <div className="mt-8">
                         <div className="flow-root">
-                          <ul role="list" className="-my-6 divide-y divide-gray-200">
-                          {items.map((cartItem) => (
-  <li key={cartItem.productId} className="flex py-6">
-    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-      <img
-        src={`http://localhost:8080${cartItem.product_picture}`} 
-        alt={cartItem.product_name}
-        className="h-full w-full object-cover object-center"
-      />
-    </div>
+                          <ul
+                            role="list"
+                            className="-my-6 divide-y divide-gray-200"
+                          >
+                            {items.map((items) => (
+                              <li key={items.productId} className="flex py-6">
+                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                  <img
+                                    src={`http://localhost:8080${items.productId.product_picture}`}
+                                    alt={items.productId.product_name}
+                                    className="h-full w-full object-cover object-center"
+                                  />
+                                </div>
 
-    <div className="ml-4 flex flex-1 flex-col">
-      <div>
-        <p className="text-red-600 text-base flex flex-col gap-2 sm:flex-row  ">
-          <del className="text-gray-600">
-            Rs.
-            {parseFloat(cartItem.product_discount) +
-              parseFloat(cartItem.product_price)}
-          </del>{" "}
-          Rs.{cartItem.product_price}
-        </p>
-      </div>
-      <div className="flex flex-1 items-end justify-between text-sm">
-        <p className="text-gray-500">Qty {cartItem.quantity}</p>
-        <div className="flex">
-          <button
-            onClick={() => removeFromCartHandler(cartItem.productId)} // Pass productId to the handler
-            type="button"
-            className="font-medium text-indigo-600 hover:text-indigo-500"
-          >
-            Remove
-          </button>
-        </div>
-      </div>
-    </div>
-  </li>
-))}
-
+                                <div className="ml-4 flex flex-1 flex-col">
+                                  <div>
+                                    <p className="text-red-600 text-base flex flex-col gap-2 sm:flex-row  ">
+                                      <del className="text-gray-600">
+                                        Rs.
+                                        {parseFloat(
+                                          items.productId.product_discount
+                                        ) +
+                                          parseFloat(
+                                            items.productId.product_price
+                                          )}
+                                      </del>{" "}
+                                      Rs.{items.productId.product_price}
+                                    </p>
+                                    
+                                  </div>
+                                  <div className="flex flex-1 items-end justify-between text-sm">
+                                    <p className="text-gray-500">
+                                      Qty {items.quantity}
+                                    </p>
+                                    <div className="flex">
+                                      <button
+                                        onClick={() =>
+                                          removeFromCartHandler(items.productId)
+                                        } // Pass productId to the handler
+                                        type="button"
+                                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                                      >
+                                        Remove
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                            ))}
                           </ul>
                         </div>
                       </div>
@@ -118,9 +130,12 @@ export default function Cart() {
                         <p>Subtotal</p>
                         <p>$262.00</p>
                       </div>
-                      <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                      <p className="mt-0.5 text-sm text-gray-500">
+                        Shipping and taxes calculated at checkout.
+                      </p>
                       <div className="mt-6">
                         <a
+                        // onClick={handleCheckout}
                           href="#"
                           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                         >
@@ -129,7 +144,7 @@ export default function Cart() {
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
-                          or{' '}
+                          or{" "}
                           <button
                             type="button"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
@@ -149,5 +164,5 @@ export default function Cart() {
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }

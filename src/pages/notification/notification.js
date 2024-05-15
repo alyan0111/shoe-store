@@ -3,7 +3,7 @@ import { getToken } from 'firebase/messaging';
 import { app, db, messaging } from '../../firebase/firebase'; 
 import { collection, getDocs } from 'firebase/firestore';
 
-function App() {
+function Notification() {
     const [token, setToken] = useState('');
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
@@ -22,7 +22,7 @@ function App() {
         // fetchToken();
         getTokenFromFirebase()
     }, []);
-    
+
 const getTokenFromFirebase=async()=>{
     const docsnap = await getDocs(collection(db, 'tokens'));
       const data = docsnap.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
@@ -68,4 +68,4 @@ const getTokenFromFirebase=async()=>{
     );
 }
 
-export default App;
+export default Notification;
