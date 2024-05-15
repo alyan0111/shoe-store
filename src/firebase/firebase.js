@@ -9,13 +9,13 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID"
+    apiKey: "AIzaSyCn4L6PZXYWGTVdTpu33R8gxJfReuZDpfA",
+    authDomain: "shoe-store-b96.firebaseapp.com",
+    projectId: "shoe-store-b96",
+    storageBucket: "shoe-store-b96.appspot.com",
+    messagingSenderId: "889385484485",
+    appId: "1:889385484485:web:7e0d5f17d4eabe3a9870ac",
+    measurementId: "G-LZH9DCDX1L"
 };
 
 // Initialize Firebase
